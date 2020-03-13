@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Prasun Nandy Pritam">
+    <meta name="linkedin" content="https://www.linkedin.com/in/pritamnandy/">
+    <meta name="keyword" content="HeyDev, Prasun Nandy Pritam, Javascript, Calculator, upwork">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>calculator</title>
+</head>
+<body onload="myFunction()">
+     <div class="calculator_full">
+   <div class="calculator"> 
+      <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="display">
+                        <input class="form-control display-text1" type="text" readonly>
+                        <input class="form-control display-text2" type="text" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="key-pad">
+                        <button class="btn-secondary num" data-num="7">7</button>
+                        <button class="btn-secondary num" data-num="8">8</button>
+                        <button class="btn-secondary num" data-num="9">9</button>
+
+                      
+                        <button class="btn-secondary num" data-num="4">4</button>
+                        <button class="btn-secondary num" data-num="5">5</button>
+                        <button class="btn-secondary num" data-num="6">6</button>
+                        
+                      
+                        <button class="btn-secondary num" data-num="1">1</button>
+                        <button class="btn-secondary num" data-num="2">2</button>
+                        <button class="btn-secondary num" data-num="3">3</button>
+                       
+                        <button class="btn-secondary num" data-num=".">.</button>
+                        <button class="btn-secondary num" data-num="0">0</button>
+                        <button class="btn-secondary arrow" > <i class="fa fa-arrow-left"></i> </button>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="calculate-part">
+                     <select class="form-control" id="cal">
+                        <option value="THC">% THC <i class="fa fa-arrow-down"></i></option>
+                        <option value="mg/g">mg/g THC</option>
+                      </select>
+                      <input id="thc_per" class="form-control entry1" type="text" placeholder="Legal limit of THC(%)">
+                      <input id="thc" class="form-control entry2" type="text" placeholder="∆-9 THC">
+                      <input id="thca" class="form-control entry3" type="text" placeholder="THCA">
+                </div>
+             </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button onclick="myFunction1();" class="btn-success form-control calculate-button">CALCULATE</button>
+                </div>
+            </div>
+      </div>
+   </div>   
+   <div class="container">
+        <div class="row">
+            <div class="image col-md-12">
+                <img class="mx-auto d-block" src="./uploads/powered-by-hempika.png" alt="" width="190">
+            </div>
+        </div>
+   </div>
+</div>
+   <script>
+    function myFunction1() {
+      var cal = document.getElementById("cal").value;
+      var thc = document.getElementById("thc").value; // Click on the checkbox
+      var thca = document.getElementById("thca").value;
+      
+      var result = 0;
+      if(cal === 'THC') {
+         result = Number(thc) + (Number(thca)*0.877);
+         console.log(result); 
+      } else {
+          result = Number(thc)/10 + ((Number(thca)/10)*0.877);
+          console.log(result);
+      }
+      
+      var thc_per = document.getElementById("thc_per").value;
+      
+      if(result <= thc_per) {
+        document.querySelector('.form-control.display-text1').style.backgroundColor="green";
+        var display = document.querySelector('.form-control.display-text1');
+        display.setAttribute('value', 'Legal');
+        document.querySelector('.form-control.display-text2').style.backgroundColor="green";
+        var display2 = document.querySelector('.form-control.display-text2');
+        display2.setAttribute('value', 'Total THC: '+result+'%');
+      } else {
+        document.querySelector('.form-control.display-text1').style.backgroundColor="red";
+        var display = document.querySelector('.form-control.display-text1');
+        display.setAttribute('value', 'Illegal');
+        document.querySelector('.form-control.display-text2').style.backgroundColor="red";
+        var display2 = document.querySelector('.form-control.display-text2');
+        display2.setAttribute('value', 'Total THC: '+result+'%');
+      }
+      
+    }
+
+    function myFunction() {
+        const entry1 = document.querySelector('.entry1');
+        const entry2 = document.querySelector('.entry2');
+        const entry3 = document.querySelector('.entry3');
+        const arrow = document.querySelector('.arrow');
+        var entry = document.getElementsByClassName("entry");
+
+            for (var i = 0; i < entry.length; i++) {
+                entry[i].onclick = function () {
+                    
+                }
+            };
+        
+        entry1.addEventListener('click', () => {
+            entry1.classList.add('active');
+            entry2.classList.remove('active');
+            entry3.classList.remove('active');
+            var v1 = entry1.getAttribute('value');
+            document.getElementsByClassName('active').value=v1;
+        })
+
+        entry2.addEventListener('click', () => {
+            entry1.classList.remove('active');
+            entry2.classList.add('active');
+            entry3.classList.remove('active');
+            var v2 = entry2.getAttribute('value');
+            document.getElementsByClassName('active').value=v2;
+        })
+
+        entry3.addEventListener('click', () => {
+            entry1.classList.remove('active');
+            entry2.classList.remove('active');
+            entry3.classList.add('active');
+            var v3 = entry3.getAttribute('value');
+            document.getElementsByClassName('active').value=v3;
+        })
+
+        var num = document.getElementsByClassName("num");
+
+            for (var i = 0; i < num.length; i++) {
+                num[i].onclick = function () {
+                    var x = this.getAttribute('data-num');
+                    var y = document.getElementsByClassName("active").value;
+                    if(y == undefined) {
+                        var z = x;
+                    } else {
+                        var z = y.concat(x);
+                    }
+                    var active = document.querySelector('.active');
+                    document.getElementsByClassName('active').value=z;
+                    active.setAttribute('value',z);
+                }
+            };
+
+
+        arrow.addEventListener('click', () => {
+            var y = document.getElementsByClassName("active").value;
+            if(y == undefined) {
+                
+            } else {
+                let str = y;
+                str = str.slice(0, -1);
+                var active = document.querySelector('.active');
+                document.getElementsByClassName('active').value=str;
+                active.setAttribute('value',str);
+            }
+        })
+
+
+            
+    }
+    </script>
+</body>
+</html>

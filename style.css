@@ -1,0 +1,95 @@
+.calculator_full {
+	/*margin: 20% auto;*/
+	position: absolute;
+	margin: 10% 33%;
+}
+.calculator {
+	width: 500px;
+	/*margin: 20% auto 0;*/
+	border: 2px solid #000;
+	padding: 8px;
+	border-radius: 20px;
+}
+/*.display{ 
+	background-color: white;
+	height: 200px;
+} 
+.legal{ 
+	background-color: green;
+	height: 200px;
+}
+.ilegal{ 
+	background-color: red;
+	height: 200px;
+}*/
+.display-text{ 
+	color: white;
+	/* width: 20px; */
+}
+.form-control.display-text1 {
+	background: white;
+	width: 100%;
+	padding: 0;
+	height: 70px;
+	width: 100%;
+	color: #fff;
+	padding: 10px;
+	border: 1px solid #000;
+	border-bottom: 0px;
+	border-radius: 0px;
+	text-align: center;
+	font-size: 20px;
+	font-weight: 600;
+}
+.form-control.display-text2 {
+	background: white;
+	width: 100%;
+	padding: 0;
+	height: 70px;
+	width: 100%;
+	color: #fff;
+	padding: 10px;
+	border: 1px solid #000;
+	border-top: 0px;
+	border-radius: 0px;
+	text-align: center;
+	font-size: 20px;
+	font-weight: 600;
+}
+.key-pad {
+	border: 1px solid #000;
+	margin: 2px;
+	margin-top: 20px;
+	margin-left: 6px;
+}
+[type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled), button:not(:disabled) {
+	cursor: pointer;
+	width: 53px;
+	padding: 10px;
+	margin: 5px;
+	border: 1px solid #000;
+}
+.calculate-part {
+	margin-top: 21px;
+	border: 1px solid #000;
+	padding: 5px;
+}
+#cal {
+	border: 1px solid #000;
+	border-radius: 0px;
+}
+
+.calculate-part input {
+	border: 1px solid #000;
+	border-radius: 0px;
+	margin-top: 10px;
+}
+.form-control.calculate-button {
+	width: 100%;
+	border: 1px solid;
+	border-radius: 20px;
+	padding: 0px;
+}
+.image {
+	margin: 20px auto;
+}
